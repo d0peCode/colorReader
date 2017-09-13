@@ -10,6 +10,8 @@
 
     function Controller($scope) {
         var vm = $scope;
-        
+        vm.fireColorReader = function() {
+            console.log('im in controller fireColorReader function working');
+        }
     }
 })();
