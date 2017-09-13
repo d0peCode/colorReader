@@ -1,0 +1,23 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('app', [
+            'ngRoute'
+        ])
+        .config(config);
+
+    //$inject for minify issue
+    config.$inject = ['$routeProvider'];
+
+    function config ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                controller: 'mainCtrl',
+                templateUrl: 'views/main.html',
+                controllerAs: 'vm'
+            })
+            .otherwise('/');
+    };
+
+})();
