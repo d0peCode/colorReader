@@ -12,7 +12,7 @@
         var vm = $scope;
         vm.fireColorReader = function() {
             console.log('im in controller fireColorReader function working');
-            colorCheckerService.colorCheck();
+            colorCheckerService.colorCheck(vm.color_field);
         }
     }
 })();
