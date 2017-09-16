@@ -32,6 +32,14 @@
 
                 },
                 prepareAndExecute: function(color_field) {
+                    // preparing
+                    var numbers = color_field.match(/\d+/g);
+                    if(numbers.length == 3) {
+                        this.toHEX.convert(+numbers[0], +numbers[1], +numbers[2]);
+                        this.toHSL(+numbers[0], +numbers[1], +numbers[2]);
+                    } else {
+                        alert('wrong RGB number format');
+                    }
 
                 }
             }
