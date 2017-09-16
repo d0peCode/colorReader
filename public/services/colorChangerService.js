@@ -29,7 +29,14 @@
 
                 },
                 toHEX: {
-
+                    supportFunc: function(number) {
+                        var hex = number.toString(16);
+                        return hex.length == 1 ? '0' + hex : hex;
+                    },
+                    convert: function(r, g, b) {
+                        var colorInHEX = '#' + this.supportFunc(r) + this.supportFunc(g) + this.supportFunc(b);
+                        console.log(colorInHEX);
+                    }
                 },
                 prepareAndExecute: function(color_field) {
                     // preparing
@@ -40,7 +47,6 @@
                     } else {
                         alert('wrong RGB number format');
                     }
-
                 }
             }
         }
