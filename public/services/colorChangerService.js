@@ -32,9 +32,9 @@
                         }
                         h /= 6;
                     }
-                    console.log(h);
-                    console.log(s);
-                    console.log(l);
+
+                    var colorInHSL = 'hsl(' + h + ', ' + s + ', ' + l + ')';
+                    $rootScope.$emit('colorChanged', colorInHSL);
                 },
                 toRGB: function(hex) {
                     var bigint = parseInt(hex, 16);
@@ -42,9 +42,8 @@
                     var g = (bigint >> 8) & 255;
                     var b = bigint & 255;
 
-                    //console.log(r);
-                    //console.log(g);
-                    //console.log(b);
+                    var colorInRGB = 'rgb(' + r + ', ' + g + ', ' + b +')';
+                    $rootScope.$emit('colorChanged', colorInRGB);
                 },
                 prepareAndExecute: function(color_field) {
                     // preparing
@@ -82,7 +81,6 @@
                     console.log('Lightness = '+l);
 
                     var colorInHSL = 'hsl(' + h + ', ' + s + ', ' + l + ')';
-
                     $rootScope.$emit('colorChanged', colorInHSL);
 
                     return [h, s, l];
@@ -95,19 +93,15 @@
                     },
                     convert: function(r, g, b) {
                         var colorInHEX = '#' + this.supportFunc(r) + this.supportFunc(g) + this.supportFunc(b);
-                        console.log(colorInHEX);
                         $rootScope.$emit('colorChanged', colorInHEX);
                     }
                 },
                 prepareAndExecute: function(color_field) {
                     // preparing
-                    var numbers = color_field.match(/\d+/g);
-                    if(numbers.length == 3) {
-                        this.toHSL(+numbers[0], +numbers[1], +numbers[2]);
-                        this.toHEX.convert(+numbers[0], +numbers[1], +numbers[2]);
-                    } else {
-                        alert('wrong RGB number format');
-                    }
+                    var numbers = [];
+                    numbers = color_field;
+                    this.toHSL(+numbers[0], +numbers[1], +numbers[2]);
+                    this.toHEX.convert(+numbers[0], +numbers[1], +numbers[2]);
                 }
             }
         }

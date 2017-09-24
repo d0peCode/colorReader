@@ -13,12 +13,26 @@
             console.log('im working colorCheck function in service');
             switch (color_field.charAt(0)) {
                 case 'r':
-                    console.log('its RGB');
-                    colorChangerService.colorChange.fromRGB.prepareAndExecute(color_field);
+                    //its probably fromRGB
+                    var numbers = color_field.match(/\d+/g);
+                    if(numbers.length === 3) {
+                        colorChangerService.colorChange.fromRGB.prepareAndExecute(numbers);
+                    } else {
+                        alert('its wrong rgb format');
+                        console.log(numbers.length);
+                        console.log(numbers)
+                    }
+
                     break;
                 case '#':
-                    console.log('its HEX');
-                    colorChangerService.colorChange.fromHEX.prepareAndExecute(color_field);
+                    console.log('its probably HEX');
+                    var checkLength = color_field.split('');
+                    if(checkLength.length === 7) {
+                        colorChangerService.colorChange.fromHEX.prepareAndExecute(color_field);
+                    } else {
+                        alert('color in HEX format must have 7 sign');
+                    }
+
                     break;
                 case 'h':
                     console.log('its HSL')
