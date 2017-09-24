@@ -17,6 +17,8 @@
         $rootScope.$on('colorChanged', function(event, data) {
           console.log('colorChanged event emitted');
           console.log('colors in others: (in controller)' + data);
+          vm.convertedColors = [vm.color_field]
+          vm.convertedColors.push(data);
         });
 
     }

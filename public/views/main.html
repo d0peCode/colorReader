@@ -1,7 +1,7 @@
 <h2>Hello World</h2>
 
 <form data-ng-submit="fireColorReader()">
-    <label for="colorField">Wpisz kolor w ...||...|...</label>
+    <label for="colorField">Wpisz kolor w RGB || HEX || HSL </label>
     <input
         type="text"
         ng-model="color_field"
@@ -9,6 +9,12 @@
     <input type="submit" value="Let's rock!">
 </form>
 
-<div>
-    ill have my own color
+<div style="background:{{color_field}}">
+    ill have my own color<br>
 </div>
+
+<ul>
+    <li data-ng-repeat="n in convertedColors">
+        {{n}}
+    <li>
+</ul>
