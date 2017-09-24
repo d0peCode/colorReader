@@ -20,7 +20,7 @@
                     } else {
                         alert('its wrong rgb format');
                         console.log(numbers.length);
-                        console.log(numbers)
+                        console.log(numbers);
                     }
 
                     break;
@@ -35,7 +35,16 @@
 
                     break;
                 case 'h':
-                    console.log('its HSL')
+                    console.log('its probably HSL');
+                    var numbers = color_field;
+                    numbers = numbers.match(/[+-]?\d+(\.\d+)?/g).map(parseFloat);
+                    if(numbers.length === 3) {
+                        colorChangerService.colorChange.fromHSL.prepareAndExecute(numbers);
+                    } else {
+                        alert('its wrong hsl format');
+                        console.log(numbers.length);
+                        console.log(numbers);
+                    }
                     break;
                 default:
                     alert('wrong color')
