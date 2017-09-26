@@ -1,0 +1,45 @@
+.mainpage__header {
+    text-transform: uppercase;
+    font-size: 5vw;
+    font-family: 'Chewy', cursive;
+    margin-bottom: 5px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.mainpage__label {
+    margin-bottom: 15px;
+    display: block;
+}
+.mainpage__colorsample {
+    width: 60%;
+    height: 220px;
+    border: 3px dashed black;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.mainpage__palette {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+
+}
+.mainpage__palette__record {
+    border: 2px dashed black;
+    height: 150px;
+    width: 23%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.mainpage__colorsample__list li {
+    font-size: 24px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.mainpage__palette__button--success {
+    width: 200px;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+}

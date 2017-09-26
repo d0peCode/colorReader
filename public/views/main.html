@@ -1,20 +1,40 @@
-<h2>Hello World</h2>
+<div class="container text-center">
+    <h2 class="mainpage__header">Color Reader</h2>
 
-<form data-ng-submit="fireColorReader()">
-    <label for="colorField">Wpisz kolor w RGB || HEX || HSL </label>
-    <input
-        type="text"
-        ng-model="color_field"
-        id="colorField">
-    <input type="submit" value="Let's rock!">
-</form>
+    <form data-ng-submit="fireColorReader()" class="form-inline">
+        <div class="form-group">
+            <label for="colorField" class="mainpage__label">enter RGB or HEX or HSL </label>
+            <input
+                type="text"
+                ng-model="color_field"
+                class="form-control"
+                id="colorField">
+            <input type="submit" class="btn btn-default" value="Let's rock!">
+        </div>
+    </form>
 
-<div style="background:{{color_field}}">
-    ill have my own color<br>
+    <div class="mainpage__colorsample" style="background-color:{{color_field}}">
+        <ul class="list-unstyled mainpage__colorsample__list">
+            <li data-ng-repeat="n in convertedColors">
+                {{n}}
+            <li>
+        </ul>
+    </div>
+
 </div>
 
-<ul>
-    <li data-ng-repeat="n in convertedColors">
-        {{n}}
-    <li>
-</ul>
+<div class="container mainpage__palette">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record">
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record">
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
+
+
+    </div>
+    <button class="btn btn-success mainpage__palette__button--success">Clear Pallete</button>
+</div>

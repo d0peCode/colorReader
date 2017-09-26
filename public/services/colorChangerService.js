@@ -32,8 +32,12 @@
                         }
                         h /= 6;
                     }
+                    s = s*100;
+                    s = Math.round(s);
+                    l = l*100;
+                    l = Math.round(l);
 
-                    var colorInHSL = 'hsl(' + h + ', ' + s + ', ' + l + ')';
+                    var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
                     $rootScope.$emit('colorChanged', colorInHSL);
                 },
                 toRGB: function(hex) {
@@ -133,36 +137,60 @@
                         var hex = Math.round(x * 255).toString(16);
                         return hex.length === 1 ? '0' + hex : hex;
                     };
-                    console.log('#' + toHex(r) + toHex(g) + toHex(b));
-
+                    var r1 = toHex(r);
+                    var g1 = toHex(g);
+                    var b1 = toHex(b);
+                    var colorInHEX = '#' + r1 + g1 + b1;
+                    $rootScope.$emit('colorChanged', colorInHEX);
                 },
-                toRGB: function(h, s, l) {
-                    var r, g, b;
+                toRGB: {
+                    supportFunc: function(m1, m2, hue) {
+                        var v;
+                        if (hue < 0)
+                            hue += 1;
+                        else if (hue > 1)
+                            hue -= 1;
 
-                    if (s == 0) {
-                        r = g = b = l; // achromatic
-                    } else {
-                        var hue2rgb = function hue2rgb(p, q, t) {
-                            if (t < 0) t += 1;
-                            if (t > 1) t -= 1;
-                            if (t < 1 / 6) return p + (q - p) * 6 * t;
-                            if (t < 1 / 2) return q;
-                            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-                            return p;
-                        };
+                        if (6 * hue < 1)
+                            v = m1 + (m2 - m1) * hue * 6;
+                        else if (2 * hue < 1)
+                            v = m2;
+                        else if (3 * hue < 2)
+                            v = m1 + (m2 - m1) * (2 / 3 - hue) * 6;
+                        else
+                            v = m1;
 
-                        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                        var p = 2 * l - q;
-                        r = hue2rgb(p, q, h + 1 / 3);
-                        g = hue2rgb(p, q, h);
-                        b = hue2rgb(p, q, h - 1 / 3);
+                        return 255 * v;
+                    },
+                    convert: function(h, s, l) {
+                        var m1, m2, hue;
+                        var r, g, b
+                        s /= 100;
+                        l /= 100;
+                        if (s === 0)
+                            r = g = b = (l * 255);
+                        else {
+                            if (l <= 0.5)
+                                m2 = l * (s + 1);
+                            else
+                                m2 = l + s - l * s;
+                            m1 = l * 2 - m2;
+                            hue = h / 360;
+                            r = this.supportFunc(m1, m2, hue + 1 / 3);
+                            g = this.supportFunc(m1, m2, hue);
+                            b = this.supportFunc(m1, m2, hue - 1 / 3);
+                        }
+                        console.log(r);
+                        console.log(g);
+                        console.log(b);
+
+                        var colorInRGB = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+                        $rootScope.$emit('colorChanged', colorInRGB);
                     }
-
-                    console.log(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
                 },
                 prepareAndExecute: function(numbers) {
                     this.toHEX(+numbers[0], +numbers[1], +numbers[2]);
-                    this.toRGB(+numbers[0], +numbers[1], +numbers[2]);
+                    this.toRGB.convert(+numbers[0], +numbers[1], +numbers[2]);
                 }
             }
         }
