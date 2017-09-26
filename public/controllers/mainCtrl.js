@@ -20,19 +20,20 @@
 
         $rootScope.$on('colorChanged', function(event, data) {
             if(data) {
+                console.log(data);
                 var lastObj = vm.convertedColors[vm.convertedColors.length - 1];
-                if (!lastObj) {
-                    vm.convertedColors.push({});
-                }
-                if (lastObj.firstValue && lastObj.secondValue) {
-                    vm.convertedColors.push(Object.assign({}, data));  // Push a new object
+                if (!lastObj.colorInHSL || !lastObj.colorInHex) {
+                    vm.convertedColors[vm.convertedColors.length - 1] = Object.assign(lastObj, data);
+                    console.log('add');
                 } else {
-                    vm.convertedColors[vm.convertedColors.length - 1] = Object.assign(vm.convertedColors[vm.convertedColors.length - 1], data);
+                    vm.convertedColors.push(Object.assign({}, data));  // Push a new object
+                    console.log('push new obj');
                 }
             }
         });
+
         vm.klik = function() {
-            console.log('Length: ' + vm.convertedColors.length);
+            console.log('obj: ' + vm.convertedColors);
             console.log('Type: ' + typeof vm.convertedColors);
         };
     }
