@@ -16,8 +16,11 @@
     <div class="mainpage__colorsample" style="background-color:{{color_field}}">
         <ul class="list-unstyled mainpage__colorsample__list">
             <li data-ng-repeat="n in convertedColors">
-                {{n}}
+                {{n.colorInHSL}}
+                <br>
+                {{n.colorInHEX}}
             <li>
+
         </ul>
     </div>
 
@@ -36,5 +39,5 @@
 
 
     </div>
-    <button class="btn btn-success mainpage__palette__button--success">Clear Pallete</button>
+    <button class="btn btn-success mainpage__palette__button--success" data-ng-click="klik()">Clear Pallete</button>
 </div>

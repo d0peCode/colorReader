@@ -38,7 +38,7 @@
                     l = Math.round(l);
 
                     var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-                    $rootScope.$emit('colorChanged', colorInHSL);
+                    $rootScope.$emit('colorChanged', {colorInHSL});
                 },
                 toRGB: function(hex) {
                     var bigint = parseInt(hex, 16);
@@ -47,7 +47,7 @@
                     var b = bigint & 255;
 
                     var colorInRGB = 'rgb(' + r + ', ' + g + ', ' + b +')';
-                    $rootScope.$emit('colorChanged', colorInRGB);
+                    $rootScope.$emit('colorChanged', {colorInRGB});
                 },
                 prepareAndExecute: function(color_field) {
                     // preparing
@@ -84,8 +84,8 @@
                     console.log('Saturation = '+s);
                     console.log('Lightness = '+l);
 
-                    var colorInHSL = 'hsl(' + h + ', ' + s + ', ' + l + ')';
-                    $rootScope.$emit('colorChanged', colorInHSL);
+                    var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
+                    $rootScope.$emit('colorChanged', {colorInHSL: colorInHSL});
 
                     return [h, s, l];
 
@@ -97,7 +97,7 @@
                     },
                     convert: function(r, g, b) {
                         var colorInHEX = '#' + this.supportFunc(r) + this.supportFunc(g) + this.supportFunc(b);
-                        $rootScope.$emit('colorChanged', colorInHEX);
+                        $rootScope.$emit('colorChanged', {colorInHEX: colorInHEX});
                     }
                 },
                 prepareAndExecute: function(color_field) {
@@ -141,7 +141,7 @@
                     var g1 = toHex(g);
                     var b1 = toHex(b);
                     var colorInHEX = '#' + r1 + g1 + b1;
-                    $rootScope.$emit('colorChanged', colorInHEX);
+                    $rootScope.$emit('colorChanged', {colorInHEX});
                 },
                 toRGB: {
                     supportFunc: function(m1, m2, hue) {
@@ -185,7 +185,7 @@
                         console.log(b);
 
                         var colorInRGB = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-                        $rootScope.$emit('colorChanged', colorInRGB);
+                        $rootScope.$emit('colorChanged', {colorInRGB});
                     }
                 },
                 prepareAndExecute: function(numbers) {
