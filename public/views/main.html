@@ -8,17 +8,20 @@
                 type="text"
                 ng-model="color_field"
                 class="form-control"
-                id="colorField">
+                id="colorField"
+                required>
             <input type="submit" class="btn btn-default" value="Let's rock!">
         </div>
     </form>
 
     <div class="mainpage__colorsample" style="background-color:{{color_field}}">
         <ul class="list-unstyled mainpage__colorsample__list">
-            <li data-ng-repeat="n in convertedColors | limitTo: 1">
+            <li data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 1">
                 {{n.colorInHEX}}
                 <br>
                 {{n.colorInHSL}}
+                <br>
+                {{n.colorInRGB}}
             <li>
 
         </ul>

@@ -22,7 +22,7 @@
             if(data) {
                 console.log(data);
                 var lastObj = vm.convertedColors[vm.convertedColors.length - 1];
-                if (!lastObj.colorInHSL || !lastObj.colorInHEX) {
+                if (!lastObj.colorInHSL || !lastObj.colorInHEX || !lastObj.colorInRGB) {
                     vm.convertedColors[vm.convertedColors.length - 1] = Object.assign(lastObj, data);
                     console.log('add');
                 } else {
