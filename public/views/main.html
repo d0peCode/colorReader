@@ -16,7 +16,9 @@
     <div class="mainpage__colorsample" style="background-color:{{color_field}}">
         <ul class="list-unstyled mainpage__colorsample__list">
             <li data-ng-repeat="n in convertedColors | limitTo: 1">
-                {{n}}
+                {{n.colorInHEX}}
+                <br>
+                {{n.colorInHSL}}
             <li>
 
         </ul>
@@ -26,9 +28,14 @@
 
 <div class="container mainpage__palette">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record" data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 4">
-            {{n.colorInHSL}}
-            {{n.colorInHEX}}
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"
+             data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 4"
+             style="background-color: {{n.colorInHEX}}">
+            <p class="mainpage__palette__record__paragraph text-center">
+                {{n.colorInHSL}}
+                <br>
+                {{n.colorInHEX}}
+            </p>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
