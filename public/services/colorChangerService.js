@@ -57,6 +57,11 @@
                 }
             },
             fromRGB: {
+                toRGB: function(color_field) {
+                    console.log(color_field);
+                    var colorInRGB = 'rgb(' + color_field[0] + ', ' + color_field[1] + ', ' + color_field[2] + ')'
+                    $rootScope.$emit('colorChanged', {colorInRGB: colorInRGB});
+                },
                 toHSL: function(r, g, b) {
                     r /= 255, g /= 255, b /= 255;
                     var max = Math.max(r, g, b), min = Math.min(r, g, b);
@@ -80,9 +85,11 @@
                             }
                     }
 
-                    console.log('Hue = '+h);
-                    console.log('Saturation = '+s);
-                    console.log('Lightness = '+l);
+                    h = Math.round(h);
+                    s = s * 100;
+                    l = l * 100;
+                    s = Math.round(s);
+                    l = Math.round(l);
 
                     var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
                     $rootScope.$emit('colorChanged', {colorInHSL: colorInHSL});
@@ -105,7 +112,9 @@
                     var numbers = [];
                     numbers = color_field;
                     this.toHSL(+numbers[0], +numbers[1], +numbers[2]);
+                    this.toRGB(color_field);
                     this.toHEX.convert(+numbers[0], +numbers[1], +numbers[2]);
+
                 }
             },
             fromHSL: {
@@ -180,9 +189,9 @@
                             g = this.supportFunc(m1, m2, hue);
                             b = this.supportFunc(m1, m2, hue - 1 / 3);
                         }
-                        console.log(r);
-                        console.log(g);
-                        console.log(b);
+                        r = Math.round(r);
+                        g = Math.round(g);
+                        b = Math.round(b);
 
                         var colorInRGB = 'rgb(' + r + ', ' + g + ', ' + b + ')';
                         $rootScope.$emit('colorChanged', {colorInRGB});
