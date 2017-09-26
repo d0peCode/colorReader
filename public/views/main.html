@@ -15,7 +15,7 @@
 
     <div class="mainpage__colorsample" style="background-color:{{color_field}}">
         <ul class="list-unstyled mainpage__colorsample__list">
-            <li data-ng-repeat="n in convertedColors">
+            <li data-ng-repeat="n in convertedColors | limitTo: 1">
                 {{n}}
             <li>
 
@@ -26,15 +26,13 @@
 
 <div class="container mainpage__palette">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record">
-
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record">
-
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record" data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 4">
+            {{n.colorInHSL}}
+            {{n.colorInHEX}}
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
-
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
 
     </div>
     <button class="btn btn-success mainpage__palette__button--success" data-ng-click="klik()">Clear Pallete</button>
