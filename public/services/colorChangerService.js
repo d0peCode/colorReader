@@ -93,7 +93,9 @@
                                 break;
                             }
                     }
-
+                    if(h<0){
+                        h = h + 360;
+                    }
                     h = Math.round(h);
                     s = s * 100;
                     l = l * 100;
@@ -127,6 +129,10 @@
                 }
             },
             fromHSL: {
+                toHSL: function(numbers) {
+                    var colorInHSL = 'hsl(' + numbers[0] + ', ' + numbers[1] + '%, ' + numbers[2] + '%)';
+                    $rootScope.$emit('colorChanged', {colorInHSL});
+                },
                 toHEX: function(h, s, l) {
                     h /= 360;
                     s /= 100;
@@ -207,6 +213,7 @@
                     }
                 },
                 prepareAndExecute: function(numbers) {
+                    this.toHSL(numbers);
                     this.toHEX(+numbers[0], +numbers[1], +numbers[2]);
                     this.toRGB.convert(+numbers[0], +numbers[1], +numbers[2]);
                 }

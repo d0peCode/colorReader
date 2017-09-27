@@ -27,10 +27,10 @@
                 case '#':
                     console.log('its probably HEX');
                     var checkLength = color_field.split('');
-                    if(checkLength.length === 7) {
+                    if(checkLength.length === 7 || checkLength.length === 4) {
                         colorChangerService.colorChange.fromHEX.prepareAndExecute(color_field);
                     } else {
-                        alert('color in HEX format must have 7 sign');
+                        alert('color in HEX format must have 7 or 4 signs');
                     }
 
                     break;
