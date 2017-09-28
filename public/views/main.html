@@ -32,7 +32,7 @@
 <div class="container mainpage__palette">
     <div class="row">
         <p class="help-block text-center">
-            Hey you! Your colors will stay here untill you clear cache, so sorry!
+            Hey you! Your colors will stay in palette untill you clear cache, so sorry!
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"
              data-ng-repeat="n in colorsFromCache | orderBy: reverse : true | limitTo: 4"
              style="background-color: {{n.inHEX}}">
@@ -50,4 +50,4 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
     </div>
 </div>
-<button class="btn btn-success mainpage__palette__button--success" data-ng-click="klik()">Clear Pallete</button>
+<button class="btn btn-success mainpage__palette__button--success" data-ng-click="clearCache()">Clear Pallete</button>

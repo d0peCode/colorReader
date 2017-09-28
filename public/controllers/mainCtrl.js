@@ -13,14 +13,21 @@
 
         vm.convertedColors = [ {} ];
 
-        $localForage.getItem('colors').then(function(colors) {
-            vm.colorsFromCache = colors;
-        });
-
         vm.fireColorReader = function() {
             //execute check function which will execute change function and emit event 'colorChanged'
             colorCheckerService.colorCheck(vm.color_field);
         };
+
+        vm.clearCache = function() {
+            //clear colors pallete
+            $localForage.clear().then(function() {
+                vm.colorsFromCache = [];
+            });
+        };
+
+        $localForage.getItem('colors').then(function(colors) {
+            vm.colorsFromCache = colors;
+        });
 
         $rootScope.$on('colorChanged', function(event, data) {
             if(data) {
@@ -53,6 +60,5 @@
                 }
             }
         });
-
     }
 })();
