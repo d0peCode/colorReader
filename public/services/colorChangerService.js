@@ -12,10 +12,23 @@
         this.colorChange = {
             fromHEX: {
                 toHEX: function(color_field) {
-                    var colorInHEX = color_field;
+
+                    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                    var hex = color_field.replace(shorthandRegex, function(m, r, g, b) {
+                        return '#' + r + r + g + g + b + b;
+                    });
+
+
+                    var colorInHEX = hex;
                     $rootScope.$emit('colorChanged', {colorInHEX});
                 },
                 toHSL: function(hex) {
+
+                    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+                        return r + r + g + g + b + b;
+                    });
+
                     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
                     var r = parseInt(result[1], 16);
@@ -49,10 +62,18 @@
                     $rootScope.$emit('colorChanged', {colorInHSL});
                 },
                 toRGB: function(hex) {
-                    var bigint = parseInt(hex, 16);
-                    var r = (bigint >> 16) & 255;
-                    var g = (bigint >> 8) & 255;
-                    var b = bigint & 255;
+
+                    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+                        return r + r + g + g + b + b;
+                    });
+
+                    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+                    var r = parseInt(result[1], 16);
+                    var g = parseInt(result[2], 16);
+                    var b = parseInt(result[3], 16);
+
 
                     var colorInRGB = 'rgb(' + r + ', ' + g + ', ' + b +')';
                     $rootScope.$emit('colorChanged', {colorInRGB});
