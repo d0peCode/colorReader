@@ -11,7 +11,7 @@
 }
 .mainpage__colorsample {
     width: 60%;
-    height: 220px;
+    height: 200px;
     border: 3px dashed black;
     margin: 0 auto;
     margin-top: 20px;
@@ -22,11 +22,12 @@
     margin-right: auto;
     margin-top: 30px;
     overflow: hidden;
-    height: 150px;
+    height: 180px;
 }
 .mainpage__palette__record {
     border: 2px dashed black;
-    height: 150px;
+    height: 140px;
+    margin-bottom: 10px;
     width: 23%;
     margin-left: 1%;
     margin-right: 1%;

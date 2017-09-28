@@ -31,15 +31,20 @@
 
 <div class="container mainpage__palette">
     <div class="row">
+        <p class="help-block text-center">
+            Hey you! Your colors will stay here untill you clear cache, so sorry!
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"
-             data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 4"
-             style="background-color: {{n.colorInHEX}}">
+             data-ng-repeat="n in colorsFromCache | orderBy: reverse : true | limitTo: 4"
+             style="background-color: {{n.inHEX}}">
             <p class="mainpage__palette__record__paragraph text-center">
-                {{n.colorInHSL}}
+                {{n.inHSL}}
                 <br>
-                {{n.colorInHEX}}
+                {{n.inHEX}}
+                <br>
+
             </p>
         </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
