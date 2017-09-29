@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-    res.sendFile('C:/Users/Borys/Dropbox/ngTranslateApp/public/index.html');
+    res.sendFile('C:/Users/Borys/Documents/colorreader');
     res.end();
 });
 

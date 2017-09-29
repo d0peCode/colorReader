@@ -47,7 +47,7 @@
                         numbers = numbers.match(/[+-]?\d+(\.\d+)?/g).map(parseFloat);
                         if(numbers.length === 3) {
                             if(numbers[0] > 359 || numbers[0] < 0) {
-                                alert('first HSL numbers must be in 0 - 359 range');
+                                alert('first HSL number must be in 0 - 359 range');
                             } else {
                                 if(numbers[1] < 0 || numbers[1] > 100 || numbers[2] < 0 || numbers[2] > 100) {
                                     alert('second and third numbers must be in 0-100 range');

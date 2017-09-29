@@ -56,3 +56,28 @@
     margin-right: auto;
     font-size: 24px;
 }
+
+@media(max-width:767px) {
+    .mainpage__header {
+        font-size: 34px;
+    }
+    .mainpage__palette__record__paragraph {
+        font-size: 16px;
+    }
+    .mainpage__palette__record {
+        width: 45%;
+        height: 100px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+    .mainpage__palette {
+        margin-top: 5px;
+        height: 265px;
+    }
+    .form-control {
+        width: 60% !important;
+    }
+    .mainpage__colorsample {
+        height: 130px;
+    }
+}

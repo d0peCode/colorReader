@@ -2,3 +2,7 @@
     display: inline;
     width: auto;
 }
+.help-block {
+    padding-left: 15px;
+    padding-right: 15px;
+}
