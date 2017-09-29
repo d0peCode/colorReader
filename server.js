@@ -10,11 +10,6 @@ app.use(bodyParser.json());
 //files serving
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-    res.sendFile('C:/Users/Borys/Documents/colorreader');
-    res.end();
-});
-
 app.listen(5000, function () {
     console.log('Serwer nasłuchuje na porcie: ', 5000)
 });

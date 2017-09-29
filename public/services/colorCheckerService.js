@@ -13,6 +13,7 @@
             console.log('im working colorCheck function in service');
             switch (color_field.charAt(0)) {
                 case 'r':
+                case 'R':
                     //its probably fromRGB
                     var numbers = color_field.match(/\d+/g);
                     if(numbers.length === 3) {
@@ -39,6 +40,7 @@
 
                     break;
                 case 'h':
+                case 'H':
                     console.log('its probably HSL');
                     var checkProcentage = color_field;
                     checkProcentage = checkProcentage.match(/([%])/g);
