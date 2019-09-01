@@ -7,12 +7,13 @@ It's meant to convert colors formats - RGB, HEX, HSL and to show 10%, 20%, 30% l
 It also has palette where you can save 8 colors to cache. For logged
 user you can extend your palette do 20 colors and save it to database.
 
-Backend is REST API with endpoints: 
+Backend is REST API created on top of [my fork](https://github.com/d0peCode/express-mongo-jwt-boilerplate). It contains following endpoints: 
 
 - register
 - login
-- remind
-- reset
+- activateAccount
+- remindPassword
+- resetPassword
 
 ### Stack
 
