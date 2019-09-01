@@ -15,7 +15,7 @@
         $routeProvider
             .when('/', {
                 controller: 'mainCtrl',
-                templateUrl: 'views/main.html',
+                templateUrl: 'html/views/main.html',
                 controllerAs: 'vm'
             })
             .otherwise('/');
