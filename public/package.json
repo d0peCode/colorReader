@@ -1,19 +1,18 @@
 {
   "name": "colorreader",
   "version": "1.0.0",
-  "description": "colorReader made by Borys Tyminski for VenutereGames",
+  "description": "colorReader made by Borys Tyminski as 1 day challenge",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://dopeCode@bitbucket.org/dopeCode/colorreader.git"
+    "url": "https://github.com/d0peCode/colorReader"
   },
   "author": "Borys Tyminski",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/dopeCode/colorreader#readme",
+  "homepage": "https://github.com/d0peCode/colorReader#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
