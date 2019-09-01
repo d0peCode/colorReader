@@ -10,32 +10,26 @@
     <title>colorReader for VentureGames</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/bs3-custom.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/bs3-custom.css" rel="stylesheet">
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
 </head>
 <body data-ng-app="app" data-ng-cloak="" style="background: #edf2f0">
 
-
     <div data-ng-view=""></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
-
+    <!-- modules -->
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/localforage/dist/localforage.js"></script>
+    <script src="../node_modules/angular-localforage/dist/angular-localForage.js"></script>
     <!-- main app file -->
-    <script src="app.js"></script>
-
+    <script src="../js/app.js"></script>
     <!-- controllers -->
-    <script src="controllers/mainCtrl.js"></script>
-
-    <!-- localForge -->
-    <script src="modules/localforage.js"></script>
-    <script src="modules/angular-localForage.js"></script>
-
+    <script src="../js/controllers/mainCtrl.js"></script>
     <!-- services (the interesting part indeed) -->
-    <script src="services/colorCheckerService.js"></script>
-    <script src="services/colorChangerService.js"></script>
+    <script src="../js/services/colorCheckerService.js"></script>
+    <script src="../js/services/colorChangerService.js"></script>
 </body>
 </html>
