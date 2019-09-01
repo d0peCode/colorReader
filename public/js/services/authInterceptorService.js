@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('traderSpy')
+        .module('app')
         .factory('authInterceptorService', Factory);
 
     Factory.$inject = ['$q', '$injector', '$localForage'];

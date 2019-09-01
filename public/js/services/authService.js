@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('traderSpy')
+        .module('app')
         .service('authService', Service);
 
     Service.$inject = ['$http', '$localForage', '$rootScope'];
