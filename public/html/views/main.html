@@ -1,9 +1,7 @@
 <div class="container text-center">
-    <h2 class="mainpage__header">Color Reader</h2>
-
     <form data-ng-submit="fireColorReader()" class="form-inline">
         <div class="form-group">
-            <label for="colorField" class="mainpage__label">enter RGB or HEX or HSL </label>
+            <label for="colorField" class="landing__label">enter RGB or HEX or HSL </label>
             <input
                 type="text"
                 ng-model="color_field"
@@ -14,8 +12,8 @@
         </div>
     </form>
 
-    <div class="mainpage__colorsample" style="background-color:{{color_field}}">
-        <ul class="list-unstyled mainpage__colorsample__list">
+    <div class="landing__colorsample" style="background-color:{{color_field}}">
+        <ul class="list-unstyled landing__colorsample__list">
             <li data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 1">
                 {{n.colorInHEX}}
                 <br>
@@ -29,14 +27,14 @@
 
 </div>
 
-<div class="container mainpage__palette">
+<div class="container landing__palette">
     <div class="row">
         <p class="help-block text-center">
             Hey you! Your colors will stay in palette untill you clear cache or click button below!
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 landing__palette__record"
              data-ng-repeat="n in colorsFromCache | orderBy: reverse : true | limitTo: 4"
              style="background-color: {{n.inHEX}}">
-            <p class="mainpage__palette__record__paragraph text-center">
+            <p class="landing__palette__record__paragraph text-center">
                 {{n.inHSL}}
                 <br>
                 {{n.inHEX}}
@@ -44,10 +42,10 @@
 
             </p>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 mainpage__palette__record"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 landing__palette__record"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 landing__palette__record"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 landing__palette__record"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 landing__palette__record"></div>
     </div>
 </div>
-<button class="btn btn-success mainpage__palette__button--success" data-ng-click="clearCache()">Clear Pallete</button>
+<button class="btn btn-success landing__palette__button--success" data-ng-click="clearCache()">Clear Pallete</button>

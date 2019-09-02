@@ -5,13 +5,11 @@
         .module('app')
         .controller('external', Controller);
 
-    Controller.$inject = ['$scope', '$rootScope', '$localForage', '$location'];
+    Controller.$inject = ['$scope', '$rootScope', '$localForage'];
 
-    function Controller($scope, $rootScope, $localForage, $location) {
-
-        ipcRenderer.on('app:exit', function () {
-            $localForage.clear();
-        });
+    function Controller($scope, $rootScope, $localForage) {
+        $scope.$parent.modalLogin = false;
+        $scope.$parent.modalRegister = false;
 
         //this execute after every page refresh
         $localForage.getItem('authorization')

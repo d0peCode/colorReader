@@ -8,11 +8,15 @@
     function Directive() {
         return {
             restrict: 'E',
-            templateUrl: 'html/topbarView.html',
-            controller: 'topbar',
-            link: function ($scope, $rootScope) {
-                $scope.showLangDropdown = function () {
-                    console.log('show lang dropdown')
+            templateUrl: 'html/directives/topbar.html',
+            link: function ($scope) {
+                $scope.openModal = function (which) {
+                    if(which === 'login') {
+                        $scope.$parent.modalLogin = true;
+                    }
+                    if(which === 'register') {
+                        $scope.$parent.modalRegister = true;
+                    }
                 }
             }
         }
