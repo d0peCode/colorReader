@@ -1,9 +1,12 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
+@import "abstracts/animation";
 
 @import "base/base";
+@import "base/buttons";
+@import "base/headers";
 
 @import "components/topbar";
-@import "components/buttons";
+@import "components/modal";
 
 @import "views/landing";

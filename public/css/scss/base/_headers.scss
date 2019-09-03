@@ -1,0 +1,21 @@
+.heading {
+    &-primary {
+        text-transform: uppercase;
+        font-size: 3vw;
+        font-family: 'Chewy', cursive;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        margin: 0;
+    }
+    &-secondary {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+    &-tertiary {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+}

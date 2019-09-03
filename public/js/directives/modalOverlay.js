@@ -8,7 +8,7 @@
     function Directive() {
         return {
             restrict: 'E',
-            templateUrl: 'html/directives/modalOverlay.html'
+            template: '<div class="modal__overlay"></div>'
         }
     }
 

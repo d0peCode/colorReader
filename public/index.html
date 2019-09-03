@@ -15,17 +15,16 @@
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
 </head>
 <body data-ng-app="app" data-ng-cloak="" data-ng-controller="external">
-
-    {{ $root.modalLogin }}
-    {{ $root.modalRegister }}
-
     <topbar></topbar>
     <div data-ng-view=""></div>
-    <modal-login data-ng-if="modalLogin"></modal-login>
-    <modal-register data-ng-if="modalRegister"></modal-register>
-    <modal-overlay data-ng-if="modalLogin || modalRegister"></modal-overlay>
+    <modal-overlay data-ng-if="$root.modalLogin || $root.modalRegister"></modal-overlay>
+    <div class="modal__outer" data-ng-if="$root.modalLogin || $root.modalRegister">
+        <modal-login data-ng-if="$root.modalLogin"></modal-login>
+        <modal-register data-ng-if="$root.modalRegister"></modal-register>
+    </div>
     <!-- modules -->
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-route/angular-route.js"></script>
@@ -41,6 +40,7 @@
     <script src="js/services/colorChangerService.js"></script>
     <!-- directives -->
     <script src="js/directives/topbar.js"></script>
+    <script src="js/directives/modalOverlay.js"></script>
     <script src="js/directives/modalLogin.js"></script>
     <script src="js/directives/modalRegister.js"></script>
 </body>

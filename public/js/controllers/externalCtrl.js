@@ -10,6 +10,7 @@
     function Controller($scope, $rootScope, $localForage) {
         $scope.$parent.modalLogin = false;
         $scope.$parent.modalRegister = false;
+        $scope.$parent.modalOverlay = false;
 
         //this execute after every page refresh
         $localForage.getItem('authorization')
