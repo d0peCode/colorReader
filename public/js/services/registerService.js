@@ -2,34 +2,21 @@
     'use strict';
 
     angular
-        .module('accTrader')
+        .module('app')
         .service('registerService', Service);
 
-    Service.$inject = ['$http'];
+    Service.$inject = ['$http', 'httpConfig'];
 
-    function Service($http) {
-        this.registerUser = function (registerInfo) {
-
+    function Service($http, httpConfig) {
+        this.register = function (params) {
             return $http({
-                url: 'https://acctrader.herokuapp.com/v1/sign_up',
-                headers: {
-                    'Content-Type': 'application/vnd.api+json'
-                },
+                url: httpConfig.baseUrl + '/user/register',
+                headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
-                data: {
-                    user: {
-                        email: registerInfo.email,
-                        nick: registerInfo.nick,
-                        password: registerInfo.password,
-                        password_confirmation: registerInfo.password_confirmation
-                    }
-                }
+                data: params
             })
-            .then(function(response) {
-                return response.data;
-            }, function(err) {
-                return err;
-            });
+            .then(response => { return response.data })
+            .catch(err => { console.log(err) })
         };
     }
 })();

@@ -16,7 +16,7 @@
                 $scope.password = '';
                 $scope.passwordConf = '';
                 $scope.hideModal = () => stateService.set('modalRegister', false);
-                $scope.register = () => {
+                $scope.register = async () => {
                     if($scope.password !== $scope.passwordConf) {
                         alert('Passwords are not equal!')
                     } else {
@@ -24,7 +24,8 @@
                             email: $scope.email,
                             password: $scope.password
                         };
-                        registerService.register(params);
+                        const response = await registerService.register(params);
+                        console.log(response);
                     }
                 }
             }
