@@ -5,14 +5,28 @@
         .module('app')
         .directive('modalRegister', Directive);
 
-    Directive.$inject = ['stateService'];
+    Directive.$inject = ['stateService', 'registerService'];
 
-    function Directive(stateService) {
+    function Directive(stateService, registerService) {
         return {
             restrict: 'E',
             templateUrl: 'html/directives/modalRegister.html',
             link: function ($scope) {
+                $scope.email = '';
+                $scope.password = '';
+                $scope.passwordConf = '';
                 $scope.hideModal = () => stateService.set('modalRegister', false);
+                $scope.register = () => {
+                    if($scope.password !== $scope.passwordConf) {
+                        alert('Passwords are not equal!')
+                    } else {
+                        const params = {
+                            email: $scope.email,
+                            password: $scope.password
+                        };
+                        registerService.register(params);
+                    }
+                }
             }
         }
     }
