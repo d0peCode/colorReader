@@ -15,8 +15,8 @@
                 method: 'POST',
                 data: params
             })
-            .then(response => { return response.data })
-            .catch(err => { console.log(err) })
+            .then(response => { return response })
+            .catch(err => { return err })
         };
     }
 })();
