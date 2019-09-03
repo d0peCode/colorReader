@@ -4,7 +4,8 @@
     angular
         .module('app', [
             'ngRoute',
-            'LocalForageModule'
+            'LocalForageModule',
+            'color.picker'
         ])
         .config(config);
 
