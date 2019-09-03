@@ -5,15 +5,16 @@
         .module('app')
         .directive('topbar', Directive);
 
-    function Directive() {
+    Directive.$inject = ['stateService'];
+
+    function Directive(stateService) {
         return {
             restrict: 'E',
             templateUrl: 'html/directives/topbar.html',
             link: function ($scope) {
                 $scope.openModal = function (which) {
-                    $scope.$parent.modalOverlay = true;
-                    if(which === 'login') $scope.$parent.modalLogin = true;
-                    if(which === 'register') $scope.$parent.modalRegister = true;
+                    if(which === 'login') stateService.set('modalLogin', true);
+                    if(which === 'register') stateService.set('modalRegister', true);
                 }
             }
         }

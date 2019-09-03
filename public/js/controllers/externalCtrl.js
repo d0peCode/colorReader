@@ -5,12 +5,13 @@
         .module('app')
         .controller('external', Controller);
 
-    Controller.$inject = ['$scope', '$rootScope', '$localForage'];
+    Controller.$inject = ['$scope', '$rootScope', '$localForage', 'stateService'];
 
-    function Controller($scope, $rootScope, $localForage) {
-        $scope.$parent.modalLogin = false;
-        $scope.$parent.modalRegister = false;
-        $scope.$parent.modalOverlay = false;
+    function Controller($scope, $rootScope, $localForage, stateService) {
+        $scope.$watch(() => {
+            $scope.modalLogin = stateService.get('modalLogin');
+            $scope.modalRegister = stateService.get('modalRegister');
+        });
 
         //this execute after every page refresh
         $localForage.getItem('authorization')

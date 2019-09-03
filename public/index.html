@@ -9,7 +9,7 @@
     <!-- less important tags -->
     <title>colorReader challenge</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/css/bs3-custom.css" rel="stylesheet">
     <link href="css/css/output.css" rel="stylesheet">
 
@@ -20,10 +20,10 @@
 <body data-ng-app="app" data-ng-cloak="" data-ng-controller="external">
     <topbar></topbar>
     <div data-ng-view=""></div>
-    <modal-overlay data-ng-if="$root.modalLogin || $root.modalRegister"></modal-overlay>
-    <div class="modal__outer" data-ng-if="$root.modalLogin || $root.modalRegister">
-        <modal-login data-ng-if="$root.modalLogin"></modal-login>
-        <modal-register data-ng-if="$root.modalRegister"></modal-register>
+    <div class="modal__overlay" data-ng-if="modalLogin || modalRegister"></div>
+    <div class="modal__outer" data-ng-if="modalLogin || modalRegister">
+        <modal-login data-ng-if="modalLogin"></modal-login>
+        <modal-register data-ng-if="modalRegister"></modal-register>
     </div>
     <!-- modules -->
     <script src="node_modules/angular/angular.js"></script>
@@ -38,6 +38,7 @@
     <!-- services (the interesting part indeed) -->
     <script src="js/services/colorCheckerService.js"></script>
     <script src="js/services/colorChangerService.js"></script>
+    <script src="js/services/stateService.js"></script>
     <!-- directives -->
     <script src="js/directives/topbar.js"></script>
     <script src="js/directives/modalOverlay.js"></script>

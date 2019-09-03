@@ -24,11 +24,11 @@
 
     &__container {
         width: 300px;
-        height: 60vh;
         z-index: 11;
         background-color: white;
         border-radius: 5px;
         animation: zoom .3s;
+        padding: 5px;
     }
 
     &__header {
@@ -51,7 +51,7 @@
 
     &__body {
         height: 80%;
-        padding: 1rem 0;
+        padding: 1rem;
         color: black;
         overflow: hidden;
     }
@@ -59,7 +59,7 @@
     &__footer {
         height: 10%;
         width: 100%;
-        border-top: 1px solid gray;
+        border-top: 1px solid lightgrey;
         padding: .5rem;
         display: flex;
         justify-content: flex-end;

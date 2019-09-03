@@ -5,14 +5,14 @@
         .module('app')
         .directive('modalRegister', Directive);
 
-    function Directive() {
+    Directive.$inject = ['stateService'];
+
+    function Directive(stateService) {
         return {
             restrict: 'E',
             templateUrl: 'html/directives/modalRegister.html',
-            link: function ($scope, $rootScope) {
-                $scope.showLangDropdown = function () {
-                    console.log('show lang dropdown')
-                }
+            link: function ($scope) {
+                $scope.hideModal = () => stateService.set('modalRegister', false);
             }
         }
     }

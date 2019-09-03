@@ -2,9 +2,20 @@
     <div class="modal__header">
         <h3 class="heading-tertiary">Zaloguj</h3>
     </div>
-    <div class="modal__body"></div>
+    <div class="modal__body">
+        <form>
+            <div class="input-group">
+                <label for="login">E-Mail:</label>
+                <input type="email" class="form-control" id="login">
+            </div>
+            <div class="input-group">
+                <label for="password">Hasło:</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+        </form>
+    </div>
     <div class="modal__footer">
         <button type="button" class="button">Zaloguj</button>
-        <button type="button" class="button">Zamknij</button>
+        <button type="button" class="button" data-ng-click="hideModal()">Zamknij</button>
     </div>
 </div>

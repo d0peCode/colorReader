@@ -5,14 +5,14 @@
         .module('app')
         .directive('modalLogin', Directive);
 
-    function Directive() {
+    Directive.$inject = ['stateService'];
+
+    function Directive(stateService) {
         return {
             restrict: 'E',
             templateUrl: 'html/directives/modalLogin.html',
-            link: function ($scope, $rootScope) {
-                $scope.showLangDropdown = function () {
-                    console.log('show lang dropdown')
-                }
+            link: function ($scope) {
+                $scope.hideModal = () => stateService.set('modalLogin', false);
             }
         }
     }
