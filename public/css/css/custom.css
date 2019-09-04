@@ -1,0 +1,30 @@
+.help-block {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.color-picker-wrapper .input-group .input-group-addon:first-child {
+    display: none;
+}
+
+.color-picker-wrapper .input-group .color-picker-input-swatch {
+    opacity: 0;
+}
+/*
+.color-picker-wrapper .color-picker-panel .color-picker-grid-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 170px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.color-picker-wrapper .color-picker-panel {
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+*/

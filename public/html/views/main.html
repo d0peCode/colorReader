@@ -1,15 +1,10 @@
 <div class="container text-center">
     <form data-ng-submit="fireColorReader()" class="form-inline">
         <div class="form-group">
-            <label for="colorField" class="landing__label">enter RGB or HEX or HSL </label>
-            <input
-                type="text"
-                ng-model="color_field"
-                class="form-control"
-                id="colorField"
-                required>
+            <label for="colorField" class="landing__label">Below enter color in RGB, HEX, HSL or pick new color #{{ selectedColor }}</label>
+            <input type="text" ng-model="color_field" class="form-control" id="colorField" required>
             <input type="submit" class="btn btn-default" value="Let's rock!">
-            <label for="colorPicker">Pick color</label>
+            <label for="colorPicker" class="btn btn-default">Pick color!</label>
             <color-picker ng-model="selectedColor" options="options"></color-picker>
         </div>
     </form>
@@ -23,7 +18,6 @@
                 <br>
                 {{n.colorInRGB}}
             <li>
-
         </ul>
     </div>
 

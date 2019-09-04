@@ -11,7 +11,7 @@
     function Controller($scope, $rootScope, $localForage, colorCheckerService) {
         var vm = $scope;
 
-        vm.selectedColor = '#1E00FF';
+        vm.selectedColor = '1E00FF';
         vm.options = {
             preserveInputFormat: true,
             format: 'hex',
