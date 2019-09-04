@@ -13,34 +13,14 @@
             $scope.modalRegister = stateService.get('modalRegister');
         });
 
-        //this execute after every page refresh
         $localForage.getItem('authorization')
-            .then(function (authData) {
-                    if (authData) {
-                        $scope.auth = true;
-                    } else {
-                        $scope.auth = false;
-                    }
-                }, function () {
-                    console.log("error with getting authorization localForage after refresh");
-                }
-            );
+            .then((authData) => { $scope.auth = authData });
 
-        //this execute after custom event emitted after success login response
-        $rootScope.$on('authChange', function (event) {
+        $rootScope.$on('user::auth', () => {
             $localForage.getItem('authorization')
-                .then(function (authData) {
-                        if (authData) {
-                            $scope.auth = true;
-                            console.log('logged');
-                        } else {
-                            $scope.auth = false;
-                            $location.path('/');
-                        }
-                    }, function () {
-                        console.log("error with getting authorization localForage on event");
-                    }
-                );
+                .then((authData) => {
+                    $scope.auth = authData;
+                });
         });
     }
 
