@@ -11,14 +11,19 @@
         $scope.$watch(() => {
             $scope.modalLogin = stateService.get('modalLogin');
             $scope.modalRegister = stateService.get('modalRegister');
+            $scope.logged = stateService.get('logged');
         });
 
         $localForage.getItem('authorization')
-            .then((authData) => { stateService.set('logged', authData) });
+            .then(authData => {
+                if(authData && authData.logged) stateService.set('logged', true);
+            });
 
         $rootScope.$on('user::auth', () => {
             $localForage.getItem('authorization')
-                .then((authData) => { stateService.set('logged', authData) });
+                .then(authData => {
+                    if(authData && authData.logged) stateService.set('logged', true);
+                });
         });
     }
 

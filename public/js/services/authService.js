@@ -17,7 +17,7 @@
             })
             .then(response => {
                 if(response && response.status === 200 && response.data.token) {
-                    return $localForage.setItem('authorization', { token: response.data.token })
+                    return $localForage.setItem('authorization', { logged: true, token: response.data.token })
                     .then(() => {
                         $rootScope.$emit('user::auth');
                         return response;

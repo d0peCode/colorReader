@@ -5,17 +5,17 @@
     <div class="modal__body">
         <form id="loginForm" data-ng-submit="login()" data-ng-if="!success">
             <div class="form-group">
-                <label for="login">E-Mail:</label>
-                <input type="email" class="form-control" id="login">
+                <label for="email">E-Mail:</label>
+                <input type="email" class="form-control" id="email" data-ng-model="$parent.email">
             </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" data-ng-model="$parent.password">
             </div>
         </form>
     </div>
     <div class="modal__footer">
-        <button type="submit" class="button">Zaloguj</button>
-        <button type="button" class="button" data-ng-click="hideModal()">Zamknij</button>
+        <button type="submit" class="button" form="loginForm">Login</button>
+        <button type="button" class="button" data-ng-click="hideModal()">Close</button>
     </div>
 </div>

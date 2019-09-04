@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <!-- required tags go first which is best practise -->
     <meta charset="UTF-8">
@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
 </head>
 <body data-ng-app="app" data-ng-cloak="" data-ng-controller="external">
+    {{ logged }}
     <topbar></topbar>
     <div data-ng-view=""></div>
     <div class="modal__overlay" data-ng-if="modalLogin || modalRegister"></div>
