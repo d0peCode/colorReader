@@ -20,6 +20,6 @@
                 controllerAs: 'vm'
             })
             .otherwise('/');
-    };
+    }
 
 })();
