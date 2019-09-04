@@ -29,15 +29,8 @@
         };
 
         this.logout = () => {
-            $http({
-                url: '',
-                headers: { 'Content-Type': 'application/json' },
-                method: 'DELETE'
-            })
-            .then(() => {
                 $localForage.clear()
                     .then(() => { $rootScope.$emit('user::auth') });
-            });
         };
     }
 })();

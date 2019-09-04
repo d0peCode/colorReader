@@ -3,16 +3,18 @@
         <h3 class="heading-tertiary">Login</h3>
     </div>
     <div class="modal__body">
-        <form id="loginForm" data-ng-submit="login()" data-ng-if="!success">
+        <form id="loginForm" data-ng-submit="login()">
             <div class="form-group">
                 <label for="email">E-Mail:</label>
-                <input type="email" class="form-control" id="email" data-ng-model="$parent.email">
+                <input type="email" class="form-control" id="email" data-ng-model="email">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" data-ng-model="$parent.password">
+                <input type="password" class="form-control" id="password" data-ng-model="password">
             </div>
         </form>
+        <div data-ng-if="errorActive">This account is not activated.</div>
+        <div data-ng-if="errorPass">No account associated with this email or wrong password.</div>
     </div>
     <div class="modal__footer">
         <button type="submit" class="button" form="loginForm">Login</button>

@@ -22,7 +22,11 @@
         $rootScope.$on('user::auth', () => {
             $localForage.getItem('authorization')
                 .then(authData => {
-                    if(authData && authData.logged) stateService.set('logged', true);
+                    if(authData && authData.logged) {
+                        stateService.set('logged', true);
+                    } else {
+                        stateService.set('logged', false);
+                    }
                 });
         });
     }
