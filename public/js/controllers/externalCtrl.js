@@ -14,13 +14,11 @@
         });
 
         $localForage.getItem('authorization')
-            .then((authData) => { $scope.auth = authData });
+            .then((authData) => { stateService.set('logged', authData) });
 
         $rootScope.$on('user::auth', () => {
             $localForage.getItem('authorization')
-                .then((authData) => {
-                    $scope.auth = authData;
-                });
+                .then((authData) => { stateService.set('logged', authData) });
         });
     }
 

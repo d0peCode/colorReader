@@ -8,7 +8,8 @@
     function Service() {
         this.state = {
             modalLogin: false,
-            modalRegister: false
+            modalRegister: false,
+            logged: false
         };
         this.set = (property, value) => {
             this.state[property] = value;
