@@ -10,12 +10,8 @@ async function findAndGenerateToken (payload, from) {
   if (!email) throw new APIError('Email must be provided for login')
   let user
 
-  if (from === 'admin') {
-    user = await Admin.findOne({ email }).exec()
-  }
-  if (from === 'user') {
-    user = await User.findOne({ email }).exec()
-  }
+  if (from === 'admin') user = await Admin.findOne({ email }).exec()
+  if (from === 'user') user = await User.findOne({ email }).exec()
 
   if (!user) throw new APIError(`No user associated with ${email}`, httpStatus.NOT_FOUND)
 
@@ -23,7 +19,7 @@ async function findAndGenerateToken (payload, from) {
 
   if (!passwordOK) throw new APIError(`Password mismatch`, httpStatus.UNAUTHORIZED)
   if (from === 'user' && !user.active) {
-    throw new APIError(`User not activated`, httpStatus.UNAUTHORIZED)
+    throw new APIError(`User not activated`, httpStatus.FORBIDDEN)
   }
 
   return user
