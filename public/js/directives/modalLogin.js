@@ -24,7 +24,11 @@
                     const response = await authService.login(params);
                     if(response.status === 403) $scope.errorActive = true;
                     if(response.status === 401) $scope.errorPass = true;
-                    if(response.status === 200) $scope.success = true;
+                    if(response.status === 200) {
+                        $scope.success = true;
+                        stateService.set('modalLogin', false);
+                        $scope.$apply();
+                    }
                 }
             }
         }
