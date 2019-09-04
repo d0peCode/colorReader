@@ -5,71 +5,38 @@
         .module('app')
         .service('authService', Service);
 
-    Service.$inject = ['$http', '$localForage', '$rootScope'];
+    Service.$inject = ['$http', '$localForage', '$rootScope', 'httpConfig'];
 
-    function Service($http, $localForage, $rootScope) {
-
-        this.login = function (loginData) {
-
-            var user = {
-                "user": {
-                    "name": loginData.name,
-                    "password": loginData.password
-                }
-            };
-
+    function Service($http, $localForage, $rootScope, httpConfig) {
+        this.login = (params) => {
             return $http({
-                url: 'https://trade.rzessski.cloud/api/public/signin',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                url: httpConfig.baseUrl + '/user/login',
+                headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
-                data: user
+                data: params
             })
-            .then(function(response) {
-                console.log(response);
-                if(response) {
-                    if (response.data.data.attributes.token) {
-                        return $localForage.setItem('authorization', {
-                            token: response.data.data.attributes.token
-                        })
-                        .then(function () {
-                            $rootScope.$emit('authChange');
-                            console.log('emitted');
-                            return response;
-                        })
-                        .catch(function () {
-                            console.log('error while setting authorization token to localforage');
-                            return false;
-                        });
-                    } else {
-                        console.log("token doesn't exist in sign_in response");
-                    }
-                } else {
-                    return response;
+            .then(response => {
+                if(response && response.status === 200 && response.data.token) {
+                    return $localForage.setItem('authorization', { token: response.data.token })
+                    .then(() => {
+                        $rootScope.$emit('user::auth');
+                        return response;
+                    })
+                    .catch(err => { return err });
                 }
-            }, function (err) {
-                console.log("err:");
-                console.log(err);
-                return err;
-            });
+            })
+            .catch(err => { return err });
         };
 
-        this.logout = function() {
-
+        this.logout = () => {
             $http({
-                url: 'https://trade.rzessski.cloud/api/public/signout',
+                url: '',
+                headers: { 'Content-Type': 'application/json' },
                 method: 'DELETE'
             })
-            .then(function() {
-                console.log("deleted session");
+            .then(() => {
                 $localForage.clear()
-                    .then(function() {
-                        $rootScope.$emit('authChange');
-                        // async emit event to execute async function in external controller
-                    });
-            },function() {
-                alert("error deleting session");
+                    .then(() => { $rootScope.$emit('user::auth') });
             });
         };
     }
