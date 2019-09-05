@@ -32,5 +32,16 @@
                 $localForage.clear()
                     .then(() => { $rootScope.$emit('user::auth') });
         };
+
+        this.remind = (params) => {
+            return $http({
+                url: httpConfig.baseUrl + '/user/remind',
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST',
+                data: params
+            })
+                .then(response => { return response })
+                .catch(err => { return err });
+        }
     }
 })();

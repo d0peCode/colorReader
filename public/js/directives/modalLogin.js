@@ -17,6 +17,7 @@
                 $scope.success = false;
                 $scope.errorPass = false;
                 $scope.errorActive = false;
+                $scope.errorRemind = false;
 
                 $scope.hideModal = () => stateService.set('modalLogin', false);
                 $scope.login = async () => {
@@ -25,9 +26,17 @@
                     if(response.status === 403) $scope.errorActive = true;
                     if(response.status === 401) $scope.errorPass = true;
                     if(response.status === 200) {
-                        $scope.success = true;
                         stateService.set('modalLogin', false);
                         $scope.$apply();
+                    }
+                };
+                $scope.remind = async () => {
+                    const params = { email: $scope.email };
+                    const response = await authService.remind(params);
+                    if(response.status === 200) {
+                        $scope.success = true
+                    } else {
+                        $scope.errorRemind = true;
                     }
                 }
             }

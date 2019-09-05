@@ -3,18 +3,34 @@
         <h3 class="heading-tertiary">Login</h3>
     </div>
     <div class="modal__body">
-        <form id="loginForm" data-ng-submit="login()">
-            <div class="form-group">
-                <label for="email">E-Mail:</label>
-                <input type="email" class="form-control" id="email" data-ng-model="email">
+        <div class="tabs__header">
+            <span class="tab__header" data-ng-click="setTab('login')">Login</span>
+            <span class="tab__header" data-ng-click="setTab('remind')">Remind</span>
+        </div>
+        <div class="tabs__body">
+            <div class="tab__body" data-ng-if="tab.selected === 'login'">
+                <form id="loginForm" data-ng-submit="$parent.login()">
+                    <div class="form-group">
+                        <label for="email">E-Mail:</label>
+                        <input type="email" class="form-control" id="email" data-ng-model="$parent.email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" data-ng-model="$parent.password">
+                    </div>
+                </form>
+                <div data-ng-if="$parent.errorActive">This account is not activated.</div>
+                <div data-ng-if="$parent.errorPass">No account associated with this email or wrong password.</div>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" data-ng-model="password">
+            <div class="tab__body" data-ng-if="tab.selected === 'remind'">
+                <form id="remindForm" data-ng-submit="$parent.remind()">
+                    <div class="form-group">
+                        <label for="emailRemind">E-Mail:</label>
+                        <input type="email" class="form-control" id="emailRemind" data-ng-model="$parent.email">
+                    </div>
+                </form>
             </div>
-        </form>
-        <div data-ng-if="errorActive">This account is not activated.</div>
-        <div data-ng-if="errorPass">No account associated with this email or wrong password.</div>
+        </div>
     </div>
     <div class="modal__footer">
         <button type="submit" class="button" form="loginForm">Login</button>
