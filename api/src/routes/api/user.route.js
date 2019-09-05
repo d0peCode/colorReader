@@ -10,11 +10,11 @@ const auth = require('../../middlewares/authorization')
 
 router.post('/register', validator(create), userController.register)
 router.post('/login', userController.login)
-router.post('/resetStart', auth(), userController.reset.sendMail)
+router.post('/resetStart', userController.reset.sendMail)
 
 router.get('/confirm', userController.confirm)
 router.get('/resetConfirm', userController.reset.updatePass)
 
 router.put('/update', validator(update), auth(), userController.update)
 
-module.exports = router
+module.exports = router;

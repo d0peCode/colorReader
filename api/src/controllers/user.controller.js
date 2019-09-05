@@ -77,12 +77,12 @@ exports.reset = {
     try {
       const resetPasswordKey = uuidv1()
       await User.findOneAndUpdate(
-        { '_id': passport.user._id },
+        { 'email': req.body.email },
         { 'resetPasswordKey': resetPasswordKey }
       )
       const mailOptions = {
         from: 'noreply',
-        to: passport.user.email,
+        to: req.body.email,
         subject: 'Reset password',
         html: `<div><h1>Hello user!</h1><p>Click <a href="${config.baseURI}/api/user/resetConfirm?key=${resetPasswordKey}">link</a> to reset your password.</p></div><div><h1>Hello developer!</h1><p>Feel free to change this template ;).</p></div>`
       }
