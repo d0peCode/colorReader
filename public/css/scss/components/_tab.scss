@@ -1,0 +1,25 @@
+.tabs {
+    &__header {
+        margin: 1rem 0;
+        z-index: 15;
+    }
+    &__body {
+        border-top: 1px solid lightgray;
+        padding: 5px;
+        margin-top: -2px;
+    }
+}
+.tab {
+    &__header {
+        padding: 1rem;
+        border: 1px solid lightgray;
+        border-bottom: none;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        cursor: pointer;
+
+        &--selected {
+            background-color: #f1f1f1;
+        }
+    }
+}

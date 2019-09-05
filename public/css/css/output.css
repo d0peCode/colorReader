@@ -170,6 +170,25 @@ a {
   justify-content: flex-end;
   align-items: center; }
 
+.tabs__header {
+  margin: 1rem 0;
+  z-index: 15; }
+
+.tabs__body {
+  border-top: 1px solid lightgray;
+  padding: 5px;
+  margin-top: -2px; }
+
+.tab__header {
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: pointer; }
+  .tab__header--selected {
+    background-color: #f1f1f1; }
+
 .landing__label {
   margin-top: 10px;
   margin-bottom: 10px;

@@ -4,8 +4,8 @@
     </div>
     <div class="modal__body">
         <div class="tabs__header">
-            <span class="tab__header" data-ng-click="setTab('login')">Login</span>
-            <span class="tab__header" data-ng-click="setTab('remind')">Remind</span>
+            <span class="tab__header" data-ng-class="currentTab === 'login' ? 'tab__header--selected' : ''" data-ng-click="setTab('login')">Login</span>
+            <span class="tab__header" data-ng-class="currentTab === 'remind' ? 'tab__header--selected' : ''" data-ng-click="setTab('remind')">Remind</span>
         </div>
         <div class="tabs__body">
             <div class="tab__body" data-ng-if="currentTab === 'login'">
@@ -19,8 +19,8 @@
                         <input type="password" class="form-control" id="password" data-ng-model="$parent.password">
                     </div>
                 </form>
-                <div data-ng-if="$parent.errorActive">This account is not activated.</div>
-                <div data-ng-if="$parent.errorPass">No account associated with this email or wrong password.</div>
+                <p data-ng-if="$parent.errorActive">This account is not activated.</p>
+                <p data-ng-if="$parent.errorPass">No account associated with this email or wrong password.</p>
             </div>
             <div class="tab__body" data-ng-if="currentTab === 'remind'">
                 <form id="remindForm" data-ng-submit="$parent.remind()">
@@ -28,6 +28,8 @@
                         <label for="emailRemind">E-Mail:</label>
                         <input type="email" class="form-control" id="emailRemind" data-ng-model="$parent.email">
                     </div>
+                    <p data-ng-if="$parent.success">Reset password link had been send to given email.</p>
+                    <p data-ng-if="$parent.errorRemind">Email not found.</p>
                 </form>
             </div>
         </div>
