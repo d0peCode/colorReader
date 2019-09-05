@@ -18,8 +18,10 @@
                 $scope.errorPass = false;
                 $scope.errorActive = false;
                 $scope.errorRemind = false;
+                $scope.currentTab = '';
 
                 $scope.hideModal = () => stateService.set('modalLogin', false);
+                $scope.setTab = (tab) => { $scope.currentTab = tab };
                 $scope.login = async () => {
                     const params = { email: $scope.email, password: $scope.password };
                     const response = await authService.login(params);

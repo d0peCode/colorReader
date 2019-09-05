@@ -8,7 +8,7 @@
             <span class="tab__header" data-ng-click="setTab('remind')">Remind</span>
         </div>
         <div class="tabs__body">
-            <div class="tab__body" data-ng-if="tab.selected === 'login'">
+            <div class="tab__body" data-ng-if="currentTab === 'login'">
                 <form id="loginForm" data-ng-submit="$parent.login()">
                     <div class="form-group">
                         <label for="email">E-Mail:</label>
@@ -22,7 +22,7 @@
                 <div data-ng-if="$parent.errorActive">This account is not activated.</div>
                 <div data-ng-if="$parent.errorPass">No account associated with this email or wrong password.</div>
             </div>
-            <div class="tab__body" data-ng-if="tab.selected === 'remind'">
+            <div class="tab__body" data-ng-if="currentTab === 'remind'">
                 <form id="remindForm" data-ng-submit="$parent.remind()">
                     <div class="form-group">
                         <label for="emailRemind">E-Mail:</label>
@@ -33,7 +33,8 @@
         </div>
     </div>
     <div class="modal__footer">
-        <button type="submit" class="button" form="loginForm">Login</button>
+        <button type="submit" class="button" form="loginForm" data-ng-if="currentTab === 'login'">Login</button>
+        <button type="submit" class="button" form="remindForm" data-ng-if="currentTab === 'remind'">Remind</button>
         <button type="button" class="button" data-ng-click="hideModal()">Close</button>
     </div>
 </div>
