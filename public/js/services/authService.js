@@ -35,7 +35,7 @@
 
         this.remind = (params) => {
             return $http({
-                url: httpConfig.baseUrl + '/user/remind',
+                url: httpConfig.baseUrl + '/user/resetStart',
                 headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
                 data: params
