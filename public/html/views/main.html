@@ -5,20 +5,16 @@
             <input type="text" ng-model="color_field" class="form-control" id="colorField" required>
             <input type="submit" class="btn btn-default" value="Let's rock!">
             <label for="colorPicker" class="btn btn-default">Pick color!</label>
-            <color-picker ng-model="selectedColor" options="options"></color-picker>
         </div>
     </form>
 
     <div class="landing__colorsample" style="background-color:{{color_field}}">
         <ul class="list-unstyled landing__colorsample__list">
             <li data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 1">
-                {{n.colorInHEX}}
-                <br>
-                {{n.colorInHSL}}
-                <br>
-                {{n.colorInRGB}}
+                {{n.colorInHEX}} <br> {{n.colorInHSL}} <br> {{n.colorInRGB}}
             <li>
         </ul>
+        <color-picker ng-model="selectedColor" options="options"></color-picker>
     </div>
 
 </div>

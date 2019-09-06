@@ -10,6 +10,20 @@
 .color-picker-wrapper .input-group .color-picker-input-swatch {
     opacity: 0;
 }
+
+.color-picker-wrapper {
+    height: 100%;
+}
+.color-picker-wrapper .color-picker-input-wrapper {
+    height: 100%;
+}
+.color-picker-wrapper .color-picker-panel.color-picker-panel-left {
+    left: auto;
+    top: 1px;
+    right: 0;
+}
+
+
 /*
 .color-picker-wrapper .color-picker-panel .color-picker-grid-wrapper {
     position: fixed;

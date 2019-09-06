@@ -11,29 +11,28 @@
     function Controller($scope, $rootScope, $localForage, colorCheckerService) {
         var vm = $scope;
 
+        window.onload = () => {
+            const d = document.getElementsByClassName('color-picker-closed')[0];
+            d.classList = 'color-picker-wrapper color-picker-closedd';
+        };
+
         vm.selectedColor = '1E00FF';
+        vm.convertedColors = [ {} ];
         vm.options = {
             preserveInputFormat: true,
             format: 'hex',
             id: 'colorPicker'
         };
-        vm.convertedColors = [ {} ];
 
-        vm.fireColorReader = function() {
-            //execute check function which will execute change function and emit event 'colorChanged'
-            colorCheckerService.colorCheck(vm.color_field);
+
+        vm.fireColorReader = () => colorCheckerService.colorCheck(vm.selectedColor);
+
+        vm.clearCache = () => {
+            $localForage.clear()
+                .then(() => { vm.colorsFromCache = []; });
         };
 
-        vm.clearCache = function() {
-            //clear colors pallete
-            $localForage.clear().then(function() {
-                vm.colorsFromCache = [];
-            });
-        };
-
-        $localForage.getItem('colors').then(function(colors) {
-            vm.colorsFromCache = colors;
-        });
+        $localForage.getItem('colors').then(colors => { vm.colorsFromCache = colors });
 
         $rootScope.$on('colorChanged', function(event, data) {
             if(data) {
