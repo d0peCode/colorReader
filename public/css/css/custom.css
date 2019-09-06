@@ -21,6 +21,7 @@
     left: auto;
     top: 1px;
     right: 0;
+    z-index: 2;
 }
 
 
