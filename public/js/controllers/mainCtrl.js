@@ -6,64 +6,63 @@
         .controller('mainCtrl', Controller);
 
     //$inject for minify issue
-    Controller.$inject = ['$scope', '$rootScope', '$localForage', 'colorCheckerService'];
+    Controller.$inject = ['$scope', '$rootScope', '$localForage', 'stateService'];
 
-    function Controller($scope, $rootScope, $localForage, colorCheckerService) {
-        var vm = $scope;
+    function Controller($scope, $rootScope, $localForage, stateService) {
+        const vm = $scope;
 
-        window.onload = () => {
-            const d = document.getElementsByClassName('color-picker-closed')[0];
-            d.classList = 'color-picker-wrapper color-picker-closedd';
-        };
-
-        vm.selectedColor = '1E00FF';
-        vm.convertedColors = [ {} ];
+        vm.convertTo = 'RGB';
+        vm.selectedColor = '4F44A0';
+        vm.palette = [];
+        vm.api = {};
         vm.options = {
             preserveInputFormat: true,
             format: 'hex',
-            id: 'colorPicker'
+            id: 'colorPicker',
+            hide: {
+                blur: false,
+                escape: false,
+                click: false
+            }
         };
 
+        window.onload = () => { if(vm.api.open) vm.api.open() };
+        setTimeout(() => { if(vm.api.open) vm.api.open(); }, 1000);
 
-        vm.fireColorReader = () => colorCheckerService.colorCheck(vm.selectedColor);
+        vm.openLogin = () => stateService.set('modalLogin', true);
 
-        vm.clearCache = () => {
+        vm.saveToPalette = color => {
+            console.log(vm.palette, color);
+
+            if(vm.palette.includes(color)) {
+                alert('this color is already within your palette');
+            } else {
+                vm.palette.push(color);
+                $localForage.setItem('palette', vm.palette);
+            }
+        };
+
+        vm.removeOneFromPalette = color => {
+            for(let i = 0; i < vm.palette.length; i++) {
+                if(vm.palette[i] === color) {
+                    vm.palette.splice(i, 1);
+                    $localForage.setItem('palette', vm.palette);
+                    //$scope.$apply();
+                }
+            }
+        };
+        vm.clearEntirePalette = () => {
             $localForage.clear()
                 .then(() => { vm.colorsFromCache = []; });
         };
 
-        $localForage.getItem('colors').then(colors => { vm.colorsFromCache = colors });
+        $localForage.getItem('palette')
+            .then(colors => {
+                if(colors) vm.palette = colors;
+            });
 
-        $rootScope.$on('colorChanged', function(event, data) {
-            if(data) {
-                console.log(data);
-                var lastObj = vm.convertedColors[vm.convertedColors.length - 1];
-                if (!lastObj.colorInHSL || !lastObj.colorInHEX || !lastObj.colorInRGB) {
-                    vm.convertedColors[vm.convertedColors.length - 1] = Object.assign(lastObj, data);
-                    if(vm.convertedColors[vm.convertedColors.length - 1].colorInRGB &&
-                       vm.convertedColors[vm.convertedColors.length - 1].colorInHSL &&
-                       vm.convertedColors[vm.convertedColors.length - 1].colorInHEX) {
-                           $localForage.getItem('colors').then(function(colors) {
-                               colors = colors || []; // initialize as empty array
-                               console.log(colors);
-                               console.log(vm.convertedColors[vm.convertedColors.length - 1].colorInHSL+vm.convertedColors[vm.convertedColors.length - 1].colorInRGB+vm.convertedColors[vm.convertedColors.length - 1].colorInHEX)
-                               colors.push({
-                                   inHSL: vm.convertedColors[vm.convertedColors.length - 1].colorInHSL,
-                                   inHEX: vm.convertedColors[vm.convertedColors.length - 1].colorInHEX,
-                                   inRGB: vm.convertedColors[vm.convertedColors.length - 1].colorInRGB
-                               });
-                               $localForage.setItem('colors', colors).then(function() {
-                                   //$rootScope.$emit('localForageUpdated');
-                                   vm.colorsFromCache = colors;
-                                   console.log(vm.colorsFromCache);
-                               });
-                            });
-                        }
-                } else {
-                    vm.convertedColors.push(Object.assign({}, data));  // Push a new object
-                    console.log('push new obj');
-                }
-            }
+        $rootScope.$on('colorChanged', (e, data) => {
+
         });
     }
 })();
