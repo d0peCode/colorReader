@@ -12,6 +12,9 @@
             $scope.modalLogin = stateService.get('modalLogin');
             $scope.modalRegister = stateService.get('modalRegister');
             $scope.logged = stateService.get('logged');
+            $scope.bgEntire = stateService.get('bgEntire');
+            $scope.bgTop = stateService.get('bgTop');
+            $scope.bgBottom = stateService.get('bgBottom');
         });
 
         $localForage.getItem('authorization')

@@ -1,8 +1,14 @@
 .palette {
     display: flex;
+    flex-direction: column;
 
+    &__container {
+        display: flex;
+    }
     &__record {
+        height: 100px;
         flex: 1;
         margin: 0 1rem;
+        border: 2px dashed black;
     }
 }

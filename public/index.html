@@ -21,6 +21,11 @@
 </head>
 <body data-ng-app="app" data-ng-cloak="" data-ng-controller="external">
     <topbar></topbar>
+
+    <div class="bg bg__entire" data-ng-style="{'background-color': '#'+bgEntire}"></div>
+    <div class="bg bg__top" data-ng-style="{'background-color': '#'+bgTop}"></div>
+    <div class="bg bg__bottom" data-ng-style="{'background-color': '#'+bgBottom}"></div>
+
     <div data-ng-view=""></div>
     <div class="modal__overlay" data-ng-if="modalLogin || modalRegister"></div>
     <div class="modal__outer" data-ng-if="modalLogin || modalRegister">

@@ -1,31 +1,27 @@
 <div class="container text-center">
-    <form data-ng-submit="fireColorReader()" class="form-inline">
-        <div class="form-group">
-            <label for="colorField" class="landing__label">Below enter color in HEX format</label>
-            <input type="text" ng-model="selectedColor" class="form-control" id="colorField" required>
-        </div>
-    </form>
+    <div class="form-group">
+        <label for="colorField" class="landing__label">Below enter color in HEX format or chose new color</label>
+        <input type="text" ng-model="selectedColor" class="form-control" id="colorField" required>
+    </div>
 
     <div class="landing__colorsample-container">
         <div class="landing__colorsample-left">
-            <div class="landing__colorsample-left-box" style="background-color: #{{selectedColor}}; filter: brightness(80%);"></div>
-            <div class="landing__colorsample-left-box" style="background-color: #{{selectedColor}}; filter: brightness(60%);"></div>
-            <div class="landing__colorsample-left-box" style="background-color: #{{selectedColor}}; filter: brightness(40%);"></div>
+            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(80%);"></div>
+            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(60%);"></div>
+            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(40%);"></div>
         </div>
         <div class="landing__colorsample-main">
-            <div class="landing__colorsample" style="background-color: #{{selectedColor}}">
-                <ul class="list-unstyled landing__colorsample__list">
-                    <li data-ng-repeat="n in convertedColors | orderBy: reverse : true | limitTo: 1">
-                        {{n.colorInHEX}} <br> {{n.colorInHSL}} <br> {{n.colorInRGB}}
-                    <li>
-                </ul>
+            <div class="landing__colorsample" data-ng-style="{ 'background-color': '#' + selectedColor }">
+                <h3 class="landing__colorsample-heading">
+                    {{ selectedColor }}
+                </h3>
                 <color-picker ng-model="selectedColor" api="api" options="options"></color-picker>
             </div>
         </div>
         <div class="landing__colorsample-right">
-            <div class="landing__colorsample-right-box" style="background-color: #{{selectedColor}}; filter: brightness(120%);"></div>
-            <div class="landing__colorsample-right-box" style="background-color: #{{selectedColor}}; filter: brightness(140%);"></div>
-            <div class="landing__colorsample-right-box" style="background-color: #{{selectedColor}}; filter: brightness(160%);"></div>
+            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(120%);"></div>
+            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(140%);"></div>
+            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(160%);"></div>
         </div>
     </div>
 
@@ -42,33 +38,25 @@
             </select>
         </button>
         <button class="btn btn-default" data-ng-click="saveToPalette(selectedColor)">Save to palette</button>
-        <button class="btn btn-default">Set as background</button>
-        <button class="btn btn-default">Set as background 50%</button>
+        <button class="btn btn-default" data-ng-click="setBackground('bgEntire')">Set as background</button>
+        <button class="btn btn-default" data-ng-click="setBackground('bgTop')">Set as background 50% top</button>
+        <button class="btn btn-default" data-ng-click="setBackground('bgBottom')">Set as background 50% bottom</button>
+        <button class="btn btn-default" data-ng-click="setBackground('clear')">Clear backgrounds</button>
     </div>
 </div>
 
-{{ palette }}
-
-<!--
-<div class="container landing__palette">
     <div class="palette">
-        <p class="help-block">Hey you! Your colors will stay in palette until you clear cache or click button below! {{ palette }}</p>
+        <p class="help-block">Hey you! Your colors will stay in palette until you clear cache or click button below!</p>
         <div class="palette__container">
             <div class="palette__record"
-                 data-ng-repeat="n in palette | orderBy: reverse : true | limitTo: 8"
-                 style="background-color: {{n.inHEX}}">
-                <p class="landing__palette__record__paragraph text-center">
-                    {{n.inHSL}} <br> {{n.inHEX}} <br>
-                </p>
+                 data-ng-repeat="n in palette track by $index"
+                 data-ng-style="{'background-color':'#'+n}">
             </div>
         </div>
     </div>
-</div>
--->
-
 
 <div class="landing__buttons">
-    <button class="btn btn-success landing__palette__button--success" data-ng-click="clearCache()">Clear Palette</button>
+    <button class="btn btn-success landing__palette__button--success" data-ng-click="clearEntirePalette()">Clear Palette</button>
     <button data-ng-if="logged" class="btn btn-success landing__palette__button--success" data-ng-click="savePalette()">Save Palette</button>
     <button data-ng-if="!logged" class="btn btn-success landing__palette__button--success" data-ng-click="openLogin()">Save Palette</button>
 </div>

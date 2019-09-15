@@ -9,7 +9,10 @@
         this.state = {
             modalLogin: false,
             modalRegister: false,
-            logged: false
+            logged: false,
+            bgEntire: '',
+            bgTop: '',
+            bgBottom: ''
         };
         this.set = (property, value) => {
             this.state[property] = value;
