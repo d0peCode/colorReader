@@ -193,12 +193,17 @@ a {
   display: flex;
   flex-direction: column; }
   .palette__container {
-    display: flex; }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
   .palette__record {
     height: 100px;
     flex: 1;
     margin: 0 1rem;
-    border: 2px dashed black; }
+    border: 2px dashed black;
+    min-width: 100px;
+    max-width: 115px;
+    margin-top: 10px; }
 
 .bg {
   width: 100%;

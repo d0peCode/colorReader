@@ -44,16 +44,15 @@
         <button class="btn btn-default" data-ng-click="setBackground('clear')">Clear backgrounds</button>
     </div>
 </div>
-
-    <div class="palette">
-        <p class="help-block">Hey you! Your colors will stay in palette until you clear cache or click button below!</p>
-        <div class="palette__container">
-            <div class="palette__record"
-                 data-ng-repeat="n in palette track by $index"
-                 data-ng-style="{'background-color':'#'+n}">
-            </div>
+<div class="palette">
+    <p class="help-block text-center">Hey you! Your colors will stay in palette until you clear cache or click button below!</p>
+    <div class="palette__container">
+        <div class="palette__record"
+             data-ng-repeat="n in palette track by $index"
+             data-ng-style="{'background-color':'#'+n}">
         </div>
     </div>
+</div>
 
 <div class="landing__buttons">
     <button class="btn btn-success landing__palette__button--success" data-ng-click="clearEntirePalette()">Clear Palette</button>
