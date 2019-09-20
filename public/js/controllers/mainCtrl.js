@@ -10,7 +10,7 @@
     function Controller($scope, $rootScope, $localForage, stateService) {
         const vm = $scope;
 
-        vm.convertTo = 'RGB';
+        vm.convertTo = 'rgb';
         vm.selectedColor = '4F44A0';
         vm.selectedColorDarken1 = '';
         vm.selectedColorDarken2 = '';
@@ -41,8 +41,12 @@
             vm.selectedColorLighten3 = tinycolor(`#${$scope.selectedColor}`).lighten(40).toString();
         });
 
-        vm.changeSelected = newColor => {
-            vm.selectedColor = newColor;
+        vm.changeSelected = newColor => { vm.selectedColor = newColor };
+        vm.changeFormat = newFormat => {
+            const color = tinycolor(vm.selectedColor);
+            if(newFormat === 'rgb') vm.selectedColor = color.toRgbString();
+            if(newFormat === 'hsl') vm.selectedColor = color.toHslString();
+            if(newFormat === 'hsv') vm.selectedColor = color.toHsvString();
         };
 
         window.onload = () => { if(vm.api.open) vm.api.open() };
