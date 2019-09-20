@@ -12,6 +12,12 @@
 
         vm.convertTo = 'RGB';
         vm.selectedColor = '4F44A0';
+        vm.selectedColorDarken1 = '';
+        vm.selectedColorDarken2 = '';
+        vm.selectedColorDarken3 = '';
+        vm.selectedColorLighten1 = '';
+        vm.selectedColorLighten2 = '';
+        vm.selectedColorLighten3 = '';
         vm.palette = ['', '', '', '', '', '', '', ''];
         vm.api = {};
         vm.options = {
@@ -26,10 +32,18 @@
         };
 
         vm.$watch('selectedColor', newVal => {
-            if(newVal.includes('#')) {
-                $scope.selectedColor = newVal.replace('#', '');
-            }
+            if(newVal.includes('#')) $scope.selectedColor = newVal.replace('#', '');
+            vm.selectedColorDarken1 = tinycolor(`#${$scope.selectedColor}`).darken(15).toString();
+            vm.selectedColorDarken2 = tinycolor(`#${$scope.selectedColor}`).darken(30).toString();
+            vm.selectedColorDarken3 = tinycolor(`#${$scope.selectedColor}`).darken(40).toString();
+            vm.selectedColorLighten1 = tinycolor(`#${$scope.selectedColor}`).lighten(15).toString();
+            vm.selectedColorLighten2 = tinycolor(`#${$scope.selectedColor}`).lighten(30).toString();
+            vm.selectedColorLighten3 = tinycolor(`#${$scope.selectedColor}`).lighten(40).toString();
         });
+
+        vm.changeSelected = newColor => {
+            vm.selectedColor = newColor;
+        };
 
         window.onload = () => { if(vm.api.open) vm.api.open() };
         setTimeout(() => { if(vm.api.open) vm.api.open(); }, 1000);

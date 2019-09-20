@@ -22,6 +22,14 @@
                 height: 32%;
                 width: 100%;
                 border: 2px dashed black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                & span {
+                    filter: invert(100%)
+                }
             }
         }
         &-main {

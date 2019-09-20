@@ -6,9 +6,15 @@
 
     <div class="landing__colorsample-container">
         <div class="landing__colorsample-left">
-            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(80%);"></div>
-            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(60%);"></div>
-            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(40%);"></div>
+            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': selectedColorDarken1 }" data-ng-click="changeSelected(selectedColorDarken1)">
+                <span data-ng-style="{ 'color': selectedColorDarken1 }">{{ selectedColorDarken1 }}</span>
+            </div>
+            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': selectedColorDarken2 }" data-ng-click="changeSelected(selectedColorDarken2)">
+                <span data-ng-style="{ 'color': selectedColorDarken2 }">{{ selectedColorDarken2 }}</span>
+            </div>
+            <div class="landing__colorsample-left-box" data-ng-style="{ 'background-color': selectedColorDarken3 }" data-ng-click="changeSelected(selectedColorDarken3)">
+                <span data-ng-style="{ 'color': selectedColorDarken3 }">{{ selectedColorDarken3 }}</span>
+            </div>
         </div>
         <div class="landing__colorsample-main">
             <div class="landing__colorsample" data-ng-style="{ 'background-color': '#' + selectedColor }">
@@ -19,10 +25,20 @@
             </div>
         </div>
         <div class="landing__colorsample-right">
-            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(120%);"></div>
-            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(140%);"></div>
-            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': '#' + selectedColor }" style="filter: brightness(160%);"></div>
+            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': selectedColorLighten1 }" data-ng-click="changeSelected(selectedColorLighten1)">
+                <span data-ng-style="{ 'color': selectedColorLighten1 }">{{ selectedColorLighten1 }}</span>
+            </div>
+            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': selectedColorLighten2 }" data-ng-click="changeSelected(selectedColorLighten2)">
+                <span data-ng-style="{ 'color': selectedColorLighten2 }">{{ selectedColorLighten2 }}</span>
+            </div>
+            <div class="landing__colorsample-right-box" data-ng-style="{ 'background-color': selectedColorLighten3 }" data-ng-click="changeSelected(selectedColorLighten3)">
+                <span data-ng-style="{ 'color': selectedColorLighten3 }">{{ selectedColorLighten3 }}</span>
+            </div>
         </div>
+    </div>
+
+    <div>
+        <h3>Current color: #{{selectedColor}}</h3>
     </div>
 
     <div class="landing__buttons">

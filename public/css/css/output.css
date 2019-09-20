@@ -244,7 +244,13 @@ a {
     .landing__colorsample-left-box, .landing__colorsample-right-box {
       height: 32%;
       width: 100%;
-      border: 2px dashed black; }
+      border: 2px dashed black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer; }
+      .landing__colorsample-left-box span, .landing__colorsample-right-box span {
+        filter: invert(100%); }
   .landing__colorsample-main {
     width: 70%; }
   .landing__colorsample-heading {
