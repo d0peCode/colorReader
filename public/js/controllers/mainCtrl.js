@@ -55,6 +55,9 @@
         vm.openLogin = () => stateService.set('modalLogin', true);
 
         vm.saveToPalette = color => {
+            const colorObj = tinycolor(color);
+            color = colorObj.toHex().toLowerCase();
+
             if(vm.palette.includes(color)) {
                 alert('this color is already within your palette');
             } else {
