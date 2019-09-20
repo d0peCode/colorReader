@@ -199,11 +199,27 @@ a {
   .palette__record {
     height: 100px;
     flex: 1;
-    margin: 0 1rem;
+    margin: 10px 1rem 0 1rem;
     border: 2px dashed black;
     min-width: 100px;
     max-width: 115px;
-    margin-top: 10px; }
+    position: relative; }
+    .palette__record-delete {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border-radius: 50%;
+      border: 2px solid #202020;
+      color: #202020;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .palette__record-delete:hover {
+        color: white;
+        background: #202020;
+        cursor: pointer; }
 
 .bg {
   width: 100%;

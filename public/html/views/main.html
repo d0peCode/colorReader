@@ -60,6 +60,11 @@
         <div class="palette__record"
              data-ng-repeat="n in palette track by $index"
              data-ng-style="{'background-color':'#'+n}">
+            <div class="palette__record-delete"
+                 data-ng-if="n !== ''"
+                 data-ng-click="clearOnePalette(n)">
+                &#x2716;
+            </div>
         </div>
     </div>
 </div>

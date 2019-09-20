@@ -87,6 +87,11 @@
         };
 
         function controlPaletteLength() {
+            if(vm.palette.length < 8) {
+                while (vm.palette.length !== 8) {
+                    vm.palette.push('');
+                }
+            }
             if(vm.palette.length > 8 && vm.palette.includes("")) {
                 for(let i = 0; i < vm.palette.length; i++) {
                     if(vm.palette[i] === '') {
@@ -109,6 +114,15 @@
 
         vm.clearEntirePalette = async () => {
             vm.palette = ['', '', '', '', '', '', '', ''];
+            applyArray(vm, 'palette');
+            await $localForage.setItem('palette', vm.palette);
+        };
+
+        vm.clearOnePalette = async color => {
+            const colorObj = tinycolor(color);
+            color = colorObj.toHex().toLowerCase();
+            vm.palette = vm.palette.filter(e => e !== color);
+            controlPaletteLength();
             applyArray(vm, 'palette');
             await $localForage.setItem('palette', vm.palette);
         };
